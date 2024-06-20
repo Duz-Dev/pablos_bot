@@ -1,0 +1,1 @@
+source ../../environments/venv_pablos-bot/Scripts/activate 
