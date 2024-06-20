@@ -1,25 +1,23 @@
-#!/c/Users/miner/environments/venv_pablos-bot/Scripts/python
 # módulo para conectar con .env
 from decouple import Config, RepositoryEnv
+
 # módulos para trabajar con la api de discord
 from discord.ext import commands
 from discord import Intents, ApplicationContext, Member
 
+# conexión con la key|clave de mi archivo .env
 config = Config(RepositoryEnv('./private/.env'))
 TOKEN = config('DISCORD_TOKEN')
+OWNER = config('OWNER_ID')
 
 intents = Intents.default() #permisos
 intents.message_content = True 
 
 #instancia del bot
-bot = commands.Bot(command_prefix='>', intents = intents, owner_id = 295594807701798912 )
+bot = commands.Bot(command_prefix='>', intents = intents, owner_id = OWNER )
 
-#DISCORD-CLIENTE
-#DISCORD-BOT. MODULO POR DESARROLLADORES
-#DISCORD
-
-bot.load_extension("comandos") # cargo el cog comandos
-bot.load_extension("eventos") # cargo el cog comandos
+bot.load_extension("app.comandos") # cargo el cog comandos
+bot.load_extension("app.eventos") # cargo el cog eventos
 
 @bot.command("saludo")
 async def comando(ctx: commands.Context): #el contexto recibe toda la información del mismo comando.
