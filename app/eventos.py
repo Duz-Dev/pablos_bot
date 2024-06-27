@@ -21,7 +21,7 @@ class Eventos(commands.Cog):
     async def on_command_error(self, ctx: commands.Context, error):
         # Uso de un comando solo disponible para el propietario del bot
         if isinstance(error, commands.NotOwner):
-            await ctx.reply(f"No puedes usar este comando")
+            await ctx.reply(f"Solo el Admin puede hacer uso de este comando.")
 
 def setup(bot: commands.Bot):
     bot.add_cog(Eventos(bot))
